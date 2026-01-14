@@ -1,0 +1,357 @@
+.mission-section {
+  background: var(--color-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: var(--radius-full);
+  opacity: 0.1;
+}
+
+.shape-1 {
+  top: 10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: var(--color-maroon);
+}
+
+.shape-2 {
+  top: 50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: var(--color-gold);
+}
+
+.shape-3 {
+  bottom: -10%;
+  left: 30%;
+  width: 300px;
+  height: 300px;
+  background: var(--color-brown);
+}
+
+/* Mission Cards */
+.mission-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-card {
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.mission-card:hover {
+  transform: translateY(-10px);
+}
+
+.mission-card-primary {
+  background: var(--gradient-primary);
+  color: var(--color-cream);
+  box-shadow: var(--shadow-strong);
+}
+
+.mission-card-secondary {
+  background: var(--color-beige);
+  color: var(--color-black);
+  box-shadow: var(--shadow-medium);
+}
+
+.mission-card .card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.mission-card-primary .card-icon {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-gold);
+}
+
+.mission-card-secondary .card-icon {
+  background: var(--gradient-primary);
+  color: var(--color-gold);
+}
+
+.mission-card h3 {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.mission-card-primary h3 {
+  color: var(--color-cream);
+}
+
+.mission-card-secondary h3 {
+  color: var(--color-maroon);
+}
+
+.mission-card p {
+  font-size: 1rem;
+  line-height: 1.9;
+  opacity: 0.95;
+}
+
+.mission-card-primary p {
+  color: var(--color-beige);
+}
+
+.mission-card-secondary p {
+  color: var(--color-gray);
+}
+
+.mission-card .card-decoration {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-full);
+  opacity: 0.1;
+}
+
+.mission-card-primary .card-decoration {
+  background: var(--color-cream);
+}
+
+.mission-card-secondary .card-decoration {
+  background: var(--color-maroon);
+}
+
+/* Values Section */
+.mission-values {
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.values-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--color-maroon);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--color-cream);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.value-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-gold);
+}
+
+.value-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.5rem;
+  color: var(--color-cream);
+}
+
+.value-item h4 {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  color: var(--color-black);
+  margin-bottom: 0.75rem;
+}
+
+.value-item p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  line-height: 1.6;
+}
+
+/* Commitment Section */
+.mission-commitment {
+  position: relative;
+  z-index: 1;
+}
+
+.commitment-content {
+  background: var(--gradient-light);
+  padding: 4rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-sand);
+}
+
+.commitment-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.commitment-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.commitment-header h3 {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--color-maroon);
+  line-height: 1.3;
+}
+
+.commitment-intro {
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.commitment-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.commitment-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.commitment-bullet {
+  width: 30px;
+  height: 30px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--color-cream);
+  flex-shrink: 0;
+}
+
+.commitment-item span {
+  font-size: 1rem;
+  color: var(--color-black);
+}
+
+.commitment-footer {
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  line-height: 1.8;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-sand);
+}
+
+.commitment-footer strong {
+  color: var(--color-maroon);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mission-cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .commitment-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .commitment-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-card {
+    padding: 2rem;
+  }
+
+  .commitment-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .values-grid {
+    gap: 1.5rem;
+  }
+
+  .value-item {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-card .card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .commitment-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}

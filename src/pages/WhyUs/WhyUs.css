@@ -1,0 +1,789 @@
+.whyus-page {
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.whyus-hero {
+  background: var(--gradient-primary);
+  padding: 6rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.whyus-hero::before {
+  content: '♪';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 15rem;
+  color: var(--color-gold);
+  opacity: 0.05;
+}
+
+.whyus-hero::after {
+  content: '♫';
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  font-size: 12rem;
+  color: var(--color-gold);
+  opacity: 0.05;
+}
+
+.whyus-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.whyus-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--color-cream);
+  margin-bottom: 1rem;
+}
+
+.whyus-hero h1 span {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+.whyus-hero p {
+  font-size: 1.1rem;
+  color: var(--color-sand);
+  line-height: 1.8;
+}
+
+/* Highlights Section */
+.highlights-section {
+  background: var(--color-cream);
+  padding: 0;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+}
+
+.highlight-item {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-right: 1px solid var(--color-beige);
+  transition: var(--transition-smooth);
+}
+
+.highlight-item:last-child {
+  border-right: none;
+}
+
+.highlight-item:hover {
+  background: var(--color-beige);
+}
+
+.highlight-icon {
+  font-size: 2rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.highlight-number {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-maroon);
+  line-height: 1;
+}
+
+.highlight-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  margin-top: 0.5rem;
+}
+
+/* Reasons Section */
+.reasons-section {
+  background: var(--gradient-light);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.reason-item {
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-beige);
+  transition: var(--transition-smooth);
+}
+
+.reason-item:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-medium);
+}
+
+.reason-item:hover .reason-icon {
+  background: var(--gradient-gold);
+  transform: scale(1.1);
+}
+
+.reason-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-cream);
+  margin-bottom: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.reason-item h3 {
+  font-size: 1.125rem;
+  color: var(--color-maroon);
+  margin-bottom: 0.75rem;
+}
+
+.reason-item p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  line-height: 1.7;
+}
+
+.reason-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-beige);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+/* Journey Section */
+.journey-section {
+  background: var(--color-cream);
+}
+
+.journey-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.journey-text {
+  max-width: 550px;
+}
+
+.journey-text .section-label::before {
+  display: none;
+}
+
+.journey-text h2 {
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--color-black);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.journey-text h2 span {
+  color: var(--color-maroon);
+  font-style: italic;
+}
+
+.journey-text p {
+  font-size: 1rem;
+  color: var(--color-gray);
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+
+.journey-text .btn-primary {
+  margin-top: 1rem;
+}
+
+.journey-image-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+}
+
+.journey-image-frame {
+  width: 100%;
+  height: 550px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-strong);
+  position: relative;
+  z-index: 2;
+}
+
+.journey-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: var(--transition-smooth);
+}
+
+.journey-image-frame:hover img {
+  transform: scale(1.03);
+}
+
+.journey-decoration {
+  position: absolute;
+  border-radius: var(--radius-lg);
+}
+
+.journey-decoration.decoration-1 {
+  top: -20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--color-gold);
+  z-index: 1;
+}
+
+.journey-decoration.decoration-2 {
+  bottom: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background: var(--color-beige);
+  z-index: 0;
+}
+
+.journey-badge {
+  position: absolute;
+  bottom: 30px;
+  left: -25px;
+  background: var(--gradient-gold);
+  padding: 1.25rem 1.75rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-gold);
+  z-index: 3;
+  text-align: center;
+}
+
+.journey-badge span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.journey-badge strong {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  color: var(--color-cream);
+  line-height: 1;
+  margin-top: 0.25rem;
+}
+
+/* T. Shourie Entertainment Section */
+.entertainment-section {
+  background: var(--gradient-light);
+}
+
+.entertainment-card {
+  background: var(--gradient-primary);
+  padding: 4rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-strong);
+}
+
+.entertainment-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.entertainment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  margin-bottom: 1.5rem;
+}
+
+.entertainment-badge svg {
+  color: var(--color-gold);
+  font-size: 1rem;
+}
+
+.entertainment-badge span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.entertainment-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-cream);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.entertainment-title span {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+.entertainment-subtitle {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  color: var(--color-beige);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.entertainment-description {
+  font-size: 1.05rem;
+  color: var(--color-beige);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  text-align: center;
+  max-width: 800px;
+}
+
+.entertainment-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.entertainment-feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(5px);
+}
+
+.entertainment-feature .feature-icon {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.entertainment-feature span {
+  font-size: 0.9rem;
+  color: var(--color-cream);
+  font-weight: 500;
+}
+
+.entertainment-btn {
+  background: var(--gradient-gold);
+  margin-bottom: 1rem;
+}
+
+.entertainment-btn::before {
+  background: var(--color-cream);
+}
+
+.entertainment-btn:hover {
+  color: var(--color-maroon);
+}
+
+.entertainment-link-text {
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background: var(--gradient-light);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--color-beige);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-gold);
+}
+
+.quote-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--color-cream);
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-quote {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-beige);
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  background: var(--color-beige);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--color-maroon);
+}
+
+.author-info h4 {
+  font-size: 1rem;
+  color: var(--color-maroon);
+  margin-bottom: 0.25rem;
+}
+
+.author-info span {
+  font-size: 0.85rem;
+  color: var(--color-gold);
+}
+
+.testimonials-note {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.testimonials-note p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+}
+
+/* Certifications Section */
+.certifications-why {
+  background: var(--color-cream);
+}
+
+.cert-why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cert-why-card {
+  background: var(--gradient-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid var(--color-beige);
+  transition: var(--transition-smooth);
+}
+
+.cert-why-card:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-medium);
+}
+
+.cert-why-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cert-why-card h3 {
+  font-size: 1.25rem;
+  color: var(--color-maroon);
+  margin-bottom: 0.5rem;
+}
+
+.cert-why-card p {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+}
+
+.cert-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  background: var(--gradient-gold);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CTA Section */
+.whyus-cta-section {
+  background: var(--gradient-light);
+  padding: 5rem 0;
+}
+
+.whyus-cta-section .cta-box {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  padding: 4rem;
+  text-align: center;
+}
+
+.whyus-cta-section .cta-box h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--color-cream);
+  margin-bottom: 1rem;
+}
+
+.whyus-cta-section .cta-box p {
+  font-size: 1.1rem;
+  color: var(--color-sand);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.whyus-cta-section .btn-primary {
+  background: var(--gradient-gold);
+}
+
+.whyus-cta-section .btn-secondary {
+  border-color: var(--color-cream);
+  color: var(--color-cream);
+}
+
+.whyus-cta-section .btn-secondary:hover {
+  background: var(--color-cream);
+  color: var(--color-maroon);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .highlight-item {
+    border-bottom: 1px solid var(--color-beige);
+  }
+
+  .highlight-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .highlight-item:nth-child(3),
+  .highlight-item:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .journey-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .journey-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .journey-text .btn-primary {
+    margin: 1rem auto 0;
+  }
+
+  .journey-image-wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .journey-image-frame {
+    height: 480px;
+  }
+
+  .journey-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .entertainment-card {
+    padding: 3rem 2rem;
+  }
+
+  .entertainment-features {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-item {
+    border-right: none;
+    border-bottom: 1px solid var(--color-beige);
+  }
+
+  .highlight-item:last-child {
+    border-bottom: none;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-image-frame {
+    height: 400px;
+  }
+
+  .journey-decoration {
+    display: none;
+  }
+
+  .journey-badge {
+    position: relative;
+    left: auto;
+    transform: none;
+    bottom: auto;
+    margin-top: 1.5rem;
+    display: inline-block;
+  }
+
+  .journey-image-wrapper {
+    text-align: center;
+  }
+
+  .cert-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whyus-cta-section .cta-box {
+    padding: 3rem 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .entertainment-features {
+    grid-template-columns: 1fr;
+  }
+
+  .entertainment-feature {
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-image-frame {
+    height: 320px;
+  }
+
+  .entertainment-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .entertainment-title {
+    font-size: 1.75rem;
+  }
+
+  .entertainment-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .entertainment-description {
+    font-size: 1rem;
+  }
+}
