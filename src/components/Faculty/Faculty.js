@@ -139,7 +139,7 @@ const Faculty = () => {
         {/* Faculty Intro */}
         <div className="faculty-intro">
           <p>
-            Our team of dedicated and experienced instructors brings a blend of professional expertise and deep-rooted passion for teaching. Trained in both Indian classical and Western music traditions, they focus not just on technique, but on helping each student find their own musical voice.
+            Our team of dedicated and experienced instructors brings a blend of professional expertise and deep-rooted passion for teaching. Trained in both Indian classical and Western music traditio[...]
           </p>
         </div>
 
@@ -153,12 +153,12 @@ const Faculty = () => {
                 </div>
                 <div className="faculty-overlay">
                   <div className="faculty-social">
-                    <a href="#" className="social-link" aria-label="LinkedIn">
+                    <button type="button" className="social-link" aria-label="LinkedIn">
                       <FaLinkedin />
-                    </a>
-                    <a href="#" className="social-link" aria-label="Email">
+                    </button>
+                    <button type="button" className="social-link" aria-label="Email">
                       <FaEnvelope />
-                    </a>
+                    </button>
                   </div>
                 </div>
                 <div className="faculty-badge">
