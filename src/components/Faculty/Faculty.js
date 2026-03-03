@@ -139,7 +139,7 @@ const Faculty = () => {
         {/* Faculty Intro */}
         <div className="faculty-intro">
           <p>
-            Our team of dedicated and experienced instructors brings a blend of professional expertise and deep-rooted passion for teaching. Trained in both Indian classical and Western music traditions, they focus not just on technique, but on helping each student find their own musical voice.
+            Our team of dedicated and experienced instructors brings a blend of professional expertise and deep-rooted passion for teaching. Trained in both Indian classical and Western music traditio[...]
           </p>
         </div>
 
