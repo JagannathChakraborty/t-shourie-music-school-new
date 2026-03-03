@@ -1,27 +1,41 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaMusic } from 'react-icons/fa';
 import './Gallery.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5106';
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Placeholder gallery data - This will be dynamic later
-  const galleryItems = [
-    { id: 1, category: 'events', title: 'Annual Concert 2024', placeholder: true },
-    { id: 2, category: 'classes', title: 'Vocal Training Session', placeholder: true },
-    { id: 3, category: 'achievements', title: 'Award Ceremony', placeholder: true },
-    { id: 4, category: 'events', title: 'Music Workshop', placeholder: true },
-    { id: 5, category: 'studio', title: 'Recording Session', placeholder: true },
-    { id: 6, category: 'classes', title: 'Classical Music Class', placeholder: true },
-    { id: 7, category: 'achievements', title: 'Student Performance', placeholder: true },
-    { id: 8, category: 'events', title: 'Cultural Program', placeholder: true },
-    { id: 9, category: 'studio', title: 'Music Production', placeholder: true },
-    { id: 10, category: 'classes', title: 'Group Learning', placeholder: true },
-    { id: 11, category: 'achievements', title: 'Competition Winners', placeholder: true },
-    { id: 12, category: 'events', title: 'Guest Performance', placeholder: true },
-  ];
+  useEffect(() => {
+    const fetchGallery = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/gallery`);
+        if (response.ok) {
+          const data = await response.json(); // [{ id, url, name, category, uploadedAt }]
+          const mapped = data.map((item) => ({
+            id: item.id,
+            category: item.category,
+            title: item.name,
+            image: item.url,
+            placeholder: !item.url,
+          }));
+          setGalleryItems(mapped);
+        }
+      } catch (error) {
+        console.error('Failed to fetch gallery:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
 
   const filters = [
     { id: 'all', name: 'All' },
@@ -111,52 +125,70 @@ const Gallery = () => {
       {/* Gallery Grid */}
       <section className="gallery-main section">
         <div className="container">
-          <motion.div className="gallery-grid" layout>
-            <AnimatePresence>
-              {filteredItems.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="gallery-item"
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4 }}
-                  onClick={() => openLightbox(index)}
-                >
-                  <div className="gallery-image">
-                    {item.placeholder ? (
-                      <div className="image-placeholder">
-                        <FaMusic />
-                        <span>Add Image</span>
-                      </div>
-                    ) : (
-                      <img src={item.image} alt={item.title} />
-                    )}
-                  </div>
-                  <div className="gallery-overlay">
-                    <span className="gallery-category">{item.category}</span>
-                    <h3 className="gallery-title">{item.title}</h3>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Empty State */}
-          {filteredItems.length === 0 && (
-            <div className="gallery-empty">
-              <FaMusic />
-              <h3>No images found</h3>
-              <p>Check back soon for more gallery updates!</p>
+          {loading ? (
+            <div className="gallery-loading" style={{ textAlign: 'center', padding: '4rem 0' }}>
+              <FaMusic style={{ fontSize: '2rem', opacity: 0.5, marginBottom: '1rem' }} />
+              <p>Loading gallery...</p>
             </div>
+          ) : (
+          <>
+            <motion.div className="gallery-grid" layout>
+              <AnimatePresence>
+                {filteredItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    className="gallery-item"
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.4 }}
+                    onClick={() => openLightbox(index)}
+                  >
+                    <div className="gallery-image">
+                      {item.placeholder ? (
+                        <div className="image-placeholder">
+                          <FaMusic />
+                          <span>{item.title}</span>
+                        </div>
+                      ) : (
+                        <img src={item.image} alt={item.title} loading="lazy" />
+                      )}
+                    </div>
+                    <div className="gallery-overlay">
+                      <span className="gallery-category">{item.category}</span>
+                      <h3 className="gallery-title">{item.title}</h3>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Empty State */}
+            {filteredItems.length === 0 && (
+              <div className="gallery-empty">
+                <FaMusic />
+                <h3>No images found</h3>
+                <p>Check back soon for more gallery updates!</p>
+              </div>
+            )}
+          </>
           )}
 
           {/* Coming Soon Notice */}
           <div className="gallery-notice">
             <p>
-              <strong>Note:</strong> Gallery images will be added soon. This section
-              will be dynamically managed by the admin panel.
+              <strong>Gallery Update In Progress:</strong> Real photos from our
+              events, classes, and studio sessions will be added shortly. Check
+              back soon or{' '}
+              <a
+                href="https://www.instagram.com/tshourieschoolofmusic"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                follow us on Instagram
+              </a>{' '}
+              for the latest moments.
             </p>
           </div>
         </div>

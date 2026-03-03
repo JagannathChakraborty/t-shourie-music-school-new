@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -22,20 +22,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   useEffect(() => {
-    gsap.fromTo(
-      '.service-detail-card',
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: '.services-detail-grid',
-          start: 'top 80%',
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.service-detail-card',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: '.services-detail-grid',
+            start: 'top 80%',
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
   }, []);
 
   const audioServices = [

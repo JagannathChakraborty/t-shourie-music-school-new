@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes, FaChevronDown, FaPhone } from 'react-icons/fa';
@@ -124,6 +124,9 @@ const Navbar = () => {
         <button
           className="mobile-toggle"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -140,7 +143,10 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             />
             <motion.div
+              id="mobile-menu"
               className="mobile-menu"
+              role="dialog"
+              aria-label="Navigation menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

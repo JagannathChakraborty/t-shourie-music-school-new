@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -16,7 +16,6 @@ import {
   FaStar,
   FaHeart,
   FaGraduationCap,
-  FaQuoteLeft,
   FaArrowRight,
   FaExternalLinkAlt,
 } from 'react-icons/fa';
@@ -29,66 +28,57 @@ import './WhyUs.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const WhyUs = () => {
+  const pageRef = useRef(null);
+
   useEffect(() => {
-    gsap.fromTo(
-      '.reason-item',
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: '.reasons-section',
-          start: 'top 75%',
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.reason-item',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.reasons-section',
+            start: 'top 75%',
+          },
+        }
+      );
 
-    gsap.fromTo(
-      '.testimonial-card',
-      { scale: 0.9, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: '.testimonials-grid',
-          start: 'top 80%',
-        },
-      }
-    );
+      gsap.fromTo(
+        '.journey-image-wrapper',
+        { x: 80, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.journey-section',
+            start: 'top 75%',
+          },
+        }
+      );
 
-    gsap.fromTo(
-      '.journey-image-wrapper',
-      { x: 80, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.journey-section',
-          start: 'top 75%',
-        },
-      }
-    );
+      gsap.fromTo(
+        '.entertainment-card',
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.entertainment-section',
+            start: 'top 80%',
+          },
+        }
+      );
+    }, pageRef);
 
-    gsap.fromTo(
-      '.entertainment-card',
-      { y: 60, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.entertainment-section',
-          start: 'top 80%',
-        },
-      }
-    );
+    return () => ctx.revert();
   }, []);
 
   const reasons = [
@@ -149,27 +139,6 @@ const WhyUs = () => {
     { icon: <FaHeart />, number: '100%', label: 'Passion Driven' },
   ];
 
-  const testimonials = [
-    {
-      name: 'Student Name',
-      course: 'Hindustani Classical',
-      quote:
-        'The training at T. Shourie School of Music has transformed my understanding of music. The faculty is exceptional!',
-    },
-    {
-      name: 'Student Name',
-      course: 'Music Production',
-      quote:
-        "I've gained hands-on experience with professional equipment. This school truly prepares you for the industry.",
-    },
-    {
-      name: 'Student Name',
-      course: 'Reality Show Grooming',
-      quote:
-        'The grooming sessions helped me crack my audition. Forever grateful to T. Shourie sir and the team!',
-    },
-  ];
-
   const pageVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 0.5 } },
@@ -183,6 +152,7 @@ const WhyUs = () => {
       initial="initial"
       animate="animate"
       exit="exit"
+      ref={pageRef}
     >
       {/* Hero Section */}
       <section className="whyus-hero">
@@ -370,53 +340,6 @@ const WhyUs = () => {
                 www.tshourieentertainment.com
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="testimonials-section section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">Testimonials</span>
-            <h2 className="section-title">
-              What Our <span>Students</span> Say
-            </h2>
-            <p className="section-subtitle">
-              Hear from our students about their experience
-            </p>
-          </div>
-
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="testimonial-card"
-                whileHover={{ y: -5 }}
-              >
-                <div className="quote-icon">
-                  <FaQuoteLeft />
-                </div>
-                <p className="testimonial-quote">"{testimonial.quote}"</p>
-                <div className="testimonial-author">
-                  <div className="author-avatar">
-                    <FaMusic />
-                  </div>
-                  <div className="author-info">
-                    <h4>{testimonial.name}</h4>
-                    <span>{testimonial.course}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="testimonials-note">
-            <p>
-              <em>
-                Note: Testimonials will be updated with real student feedback.
-              </em>
-            </p>
           </div>
         </div>
       </section>

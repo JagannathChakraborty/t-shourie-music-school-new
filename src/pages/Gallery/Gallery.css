@@ -176,6 +176,17 @@
   color: var(--color-maroon);
 }
 
+.gallery-notice a {
+  color: var(--color-gold);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.gallery-notice a:hover {
+  color: var(--color-maroon);
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;

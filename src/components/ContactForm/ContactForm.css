@@ -65,6 +65,75 @@
   font-weight: 500;
 }
 
+/* WhatsApp Quick Contact */
+.whatsapp-quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #25d366;
+  border-radius: var(--radius-md);
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.whatsapp-quick-btn:hover {
+  background: #1fba59;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-quick-btn .wa-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.whatsapp-quick-btn .wa-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-quick-btn .wa-text strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.whatsapp-quick-btn .wa-text span {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Config Notice */
+.form-config-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: rgba(185, 155, 106, 0.12);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  margin-bottom: 1.5rem;
+}
+
+.form-config-notice svg {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.form-config-notice code {
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
 /* Social Section */
 .social-section {
   margin-bottom: 2rem;

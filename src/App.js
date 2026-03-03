@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
 import { AnimatePresence } from 'framer-motion';
@@ -19,6 +19,7 @@ import './App.css';
 function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -33,12 +34,15 @@ function App() {
       infinite: false,
     });
 
+    lenisRef.current = lenis;
+
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     const timer = setTimeout(() => {
       setLoading(false);
@@ -46,13 +50,38 @@ function App() {
 
     return () => {
       clearTimeout(timer);
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (location.hash) {
+      // Navigate to a hash section (e.g. /#contact)
+      const scrollToHash = () => {
+        const id = location.hash.slice(1);
+        const element = document.getElementById(id);
+        if (element) {
+          const navbarHeight = 80;
+          const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+          if (lenisRef.current) {
+            lenisRef.current.scrollTo(top, { duration: 1.2 });
+          } else {
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }
+      };
+      // Delay to allow page to render first
+      const t = setTimeout(scrollToHash, 400);
+      return () => clearTimeout(t);
+    } else {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [location]);
 
   if (loading) {
     return <Loader />;

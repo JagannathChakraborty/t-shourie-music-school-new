@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -14,12 +14,12 @@ function FloatingParticles() {
     const color2 = new THREE.Color('#906945');
 
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 60;
+      positions[i * 3]     = (Math.random() - 0.5) * 60;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
 
       const mixedColor = color1.clone().lerp(color2, Math.random());
-      colors[i * 3] = mixedColor.r;
+      colors[i * 3]     = mixedColor.r;
       colors[i * 3 + 1] = mixedColor.g;
       colors[i * 3 + 2] = mixedColor.b;
     }
@@ -37,17 +37,14 @@ function FloatingParticles() {
   return (
     <points ref={meshRef}>
       <bufferGeometry>
+        {/* R3F v8+ uses args={[array, itemSize]} for bufferAttribute */}
         <bufferAttribute
           attach="attributes-position"
-          count={count}
-          array={particles.positions}
-          itemSize={3}
+          args={[particles.positions, 3]}
         />
         <bufferAttribute
           attach="attributes-color"
-          count={count}
-          array={particles.colors}
-          itemSize={3}
+          args={[particles.colors, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -86,7 +83,7 @@ function MusicWave() {
   const positions = useMemo(() => {
     const pos = new Float32Array(pointCount * 3);
     for (let i = 0; i < pointCount; i++) {
-      pos[i * 3] = (i - pointCount / 2) * 0.4;
+      pos[i * 3]     = (i - pointCount / 2) * 0.4;
       pos[i * 3 + 1] = 0;
       pos[i * 3 + 2] = 0;
     }
@@ -95,12 +92,12 @@ function MusicWave() {
 
   useFrame((state) => {
     if (lineRef.current) {
-      const positionsArray = lineRef.current.geometry.attributes.position.array;
+      const posArr = lineRef.current.geometry.attributes.position.array;
       const time = state.clock.elapsedTime;
 
       for (let i = 0; i < pointCount; i++) {
-        const x = positionsArray[i * 3];
-        positionsArray[i * 3 + 1] =
+        const x = posArr[i * 3];
+        posArr[i * 3 + 1] =
           Math.sin(x * 0.5 + time * 2) * 0.5 +
           Math.sin(x * 0.3 + time) * 0.3;
       }
@@ -114,9 +111,7 @@ function MusicWave() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={pointCount}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <lineBasicMaterial color="#B99B6A" opacity={0.2} transparent />
@@ -130,11 +125,11 @@ const ThreeBackground = () => {
       <Canvas
         camera={{ position: [0, 0, 25], fov: 75 }}
         style={{ background: 'transparent' }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <ambientLight intensity={0.5} />
         <FloatingParticles />
-        <AnimatedRing radius={8} speed={0.1} color="#B99B6A" />
+        <AnimatedRing radius={8}  speed={0.1}  color="#B99B6A" />
         <AnimatedRing radius={12} speed={0.08} color="#906945" />
         <AnimatedRing radius={16} speed={0.05} color="#512721" />
         <MusicWave />

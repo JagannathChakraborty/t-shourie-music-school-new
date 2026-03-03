@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaMusic, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaMusic } from 'react-icons/fa';
 
 // Image Imports
 import siddharthImg from '../../assets/images/faculty/siddharth-choudhury.jpg';
@@ -153,11 +153,12 @@ const Faculty = () => {
                 </div>
                 <div className="faculty-overlay">
                   <div className="faculty-social">
-                    <a href="#" className="social-link" aria-label="LinkedIn">
-                      <FaLinkedin />
-                    </a>
-                    <a href="#" className="social-link" aria-label="Email">
-                      <FaEnvelope />
+                    <a
+                      href="tel:9937023166"
+                      className="social-link"
+                      aria-label="Call"
+                    >
+                      <FaMusic />
                     </a>
                   </div>
                 </div>
@@ -192,7 +193,7 @@ const Faculty = () => {
               Join our school and get personalized guidance from industry experts who have dedicated their lives to music.
             </p>
           </div>
-          <a href="#contact" className="btn-primary">
+          <a href="tel:9937023166" className="btn-primary">
             <span>Enroll Now</span>
           </a>
         </motion.div>

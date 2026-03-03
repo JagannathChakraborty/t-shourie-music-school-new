@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import {
   FaPhone,
   FaEnvelope,
@@ -15,8 +14,10 @@ import {
 } from 'react-icons/fa';
 import './ContactForm.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5106';
+const WHATSAPP_URL = 'https://wa.me/919937023166';
+
 const ContactForm = () => {
-  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,10 +30,7 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -41,29 +39,36 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Replace with your EmailJS credentials
-      await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        formRef.current,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
+      const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
 
-      setStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully.',
-      });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
-    } catch (error) {
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: data.message || 'Thank you! Your message has been sent successfully.',
+        });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setStatus({
+          type: 'error',
+          message: data.message || 'Oops! Something went wrong. Please try again.',
+        });
+      }
+    } catch {
       setStatus({
         type: 'error',
-        message: 'Oops! Something went wrong. Please try again later.',
+        message: 'Unable to send your message. Please try again or reach us on WhatsApp.',
       });
     } finally {
       setIsSubmitting(false);
@@ -74,13 +79,13 @@ const ContactForm = () => {
     {
       icon: <FaMapMarkerAlt />,
       title: 'Visit Us',
-      content: 'Buxibazar, Cuttack, Odisha, Century Plaza,1st Floor, Rajtarangini Complex 753001',
-      link: 'https://maps.google.com/?q=Buxibazar,Cuttack,Odisha',
+      content: 'Century Plaza, 1st Floor, Rajtarangini Complex, Buxibazar, Cuttack, Odisha – 753001',
+      link: 'https://maps.google.com/?q=Buxibazar+Cuttack+Odisha+753001',
     },
     {
       icon: <FaPhone />,
       title: 'Call Us',
-      content: '9937023166, 0671-3507096',
+      content: '9937023166 / 0671-3507096',
       link: 'tel:9937023166',
     },
     {
@@ -92,10 +97,26 @@ const ContactForm = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaFacebook />, name: 'Facebook', url: 'https://www.facebook.com/share/17qgAMArLp/?mibextid=wwXIfr' }, 
-    { icon: <FaInstagram />, name: 'Instagram', url: 'https://www.instagram.com/tshourieschoolofmusic?igsh=Zm9wNG01Zzc4bGk0' }, 
-    { icon: <FaYoutube />, name: 'YouTube', url: 'https://youtube.com/@tshourieentertainment?si=uIfTEKzY0a9xsdJI' },
-    { icon: <FaWhatsapp />, name: 'WhatsApp', url: 'https://wa.me/919937023166' },
+    {
+      icon: <FaFacebook />,
+      name: 'Facebook',
+      url: 'https://www.facebook.com/share/17qgAMArLp/?mibextid=wwXIfr',
+    },
+    {
+      icon: <FaInstagram />,
+      name: 'Instagram',
+      url: 'https://www.instagram.com/tshourieschoolofmusic?igsh=Zm9wNG01Zzc4bGk0',
+    },
+    {
+      icon: <FaYoutube />,
+      name: 'YouTube',
+      url: 'https://youtube.com/@tshourieentertainment?si=uIfTEKzY0a9xsdJI',
+    },
+    {
+      icon: <FaWhatsapp />,
+      name: 'WhatsApp',
+      url: WHATSAPP_URL,
+    },
   ];
 
   return (
@@ -107,8 +128,8 @@ const ContactForm = () => {
             Contact <span>Us</span>
           </h2>
           <p className="section-subtitle">
-            Have questions? We'd love to hear from you. Send us a message and we'll
-            respond as soon as possible.
+            Have questions? We'd love to hear from you. Send us a message and
+            we'll respond as soon as possible.
           </p>
         </div>
 
@@ -135,6 +156,22 @@ const ContactForm = () => {
               ))}
             </div>
 
+            {/* WhatsApp Quick Contact */}
+            <motion.a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-quick-btn"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <FaWhatsapp className="wa-icon" />
+              <div className="wa-text">
+                <strong>Chat on WhatsApp</strong>
+                <span>Quick response guaranteed</span>
+              </div>
+            </motion.a>
+
             <div className="social-section">
               <h4>Follow Us</h4>
               <div className="social-links">
@@ -157,7 +194,7 @@ const ContactForm = () => {
 
             <div className="map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.0176!2d85.8833!3d20.4625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDI3JzQ1LjAiTiA4NcKwNTInNTkuOSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.448!2d85.8783!3d20.4625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xcfc0105a68086728!2sBuxibazar%2C%20Cuttack%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000"
                 width="100%"
                 height="200"
                 style={{ border: 0, borderRadius: 'var(--radius-md)' }}
@@ -171,7 +208,7 @@ const ContactForm = () => {
 
           {/* Contact Form */}
           <div className="contact-form-wrapper">
-            <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
+            <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">Full Name *</label>
