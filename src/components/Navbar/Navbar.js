@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaChevronDown, FaPhone } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaPhoneAlt } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -117,7 +117,7 @@ const Navbar = () => {
         </ul>
 
         <a href="tel:9937023166" className="navbar-cta">
-          <FaPhone />
+          <FaPhoneAlt />
           <span>Call Now</span>
         </a>
 
@@ -195,7 +195,7 @@ const Navbar = () => {
                 <Link to="/why-us" className="mobile-link">Why Choose Us</Link>
 
                 <a href="tel:9937023166" className="mobile-cta">
-                  <FaPhone />
+                  <FaPhoneAlt />
                   <span>Call: 9937023166</span>
                 </a>
               </div>

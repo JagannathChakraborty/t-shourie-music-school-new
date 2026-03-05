@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  FaPhone,
+  FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
   FaFacebook,
@@ -127,7 +127,7 @@ const Footer = () => {
                   <span>Buxibazar, Cuttack, Odisha, Century Plaza,1st Floor, Rajtarangini Complex 753001</span>
                 </a>
                 <a href="tel:9937023166" className="contact-item">
-                  <FaPhone />
+                  <FaPhoneAlt />
                   <span>9937023166, 0671-3507096</span>
                 </a>
                 <a href="mailto:info@tshourie.com" className="contact-item">

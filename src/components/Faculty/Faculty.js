@@ -152,15 +152,6 @@ const Faculty = () => {
                   <img src={member.image} alt={member.name} />
                 </div>
                 <div className="faculty-overlay">
-                  <div className="faculty-social">
-                    <a
-                      href="tel:9937023166"
-                      className="social-link"
-                      aria-label="Call"
-                    >
-                      <FaMusic />
-                    </a>
-                  </div>
                 </div>
                 <div className="faculty-badge">
                   <FaMusic />

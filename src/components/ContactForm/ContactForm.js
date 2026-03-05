@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaPhone,
+  FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
   FaFacebook,
@@ -83,7 +83,7 @@ const ContactForm = () => {
       link: 'https://maps.google.com/?q=Buxibazar+Cuttack+Odisha+753001',
     },
     {
-      icon: <FaPhone />,
+      icon: <FaPhoneAlt />,
       title: 'Call Us',
       content: '9937023166 / 0671-3507096',
       link: 'tel:9937023166',
