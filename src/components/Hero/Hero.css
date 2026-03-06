@@ -80,17 +80,18 @@
 
 .hero-title-line {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   overflow: hidden;
 }
 
 .title-word {
   font-family: var(--font-primary);
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(3rem, 5vw, 5.5rem);
   font-weight: 700;
   color: var(--color-black);
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .title-word.highlight {
@@ -166,6 +167,7 @@
 }
 
 .image-frame {
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: var(--radius-lg);
@@ -211,6 +213,80 @@
 .note-1 { top: 10%; right: 20%; }
 .note-2 { bottom: 20%; right: 10%; }
 .note-3 { top: 50%; left: 5%; }
+
+/* ===== Slideshow Styles ===== */
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+/* Progress Bar */
+.slideshow-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(185, 155, 106, 0.2);
+  z-index: 2;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+}
+
+.slideshow-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-copper));
+  transform-origin: left center;
+}
+
+/* Slide Indicators */
+.slideshow-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slideshow-dot.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: scale(1.25);
+  box-shadow: 0 0 8px rgba(185, 155, 106, 0.5);
+}
+
+.slideshow-dot:hover:not(.active) {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== End Slideshow ===== */
 
 .scroll-indicator {
   position: absolute;
@@ -267,6 +343,7 @@
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 2.5rem;
   }
 
   .hero-text {
@@ -292,7 +369,16 @@
   }
 
   .hero-visual {
-    display: none;
+    display: flex;
+  }
+
+  .hero-image-wrapper {
+    width: 350px;
+    height: 420px;
+  }
+
+  .floating-note {
+    font-size: 2rem;
   }
 }
 
@@ -314,6 +400,25 @@
   .stat-item {
     align-items: center;
   }
+
+  .hero-image-wrapper {
+    width: 300px;
+    height: 360px;
+  }
+
+  .decoration-1 {
+    top: -12px;
+    right: -12px;
+  }
+
+  .decoration-2 {
+    bottom: -12px;
+    left: -12px;
+  }
+
+  .floating-note {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -327,16 +432,19 @@
     width: 100%;
     justify-content: center;
   }
-}
 
-.image-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: var(--transition-smooth);
-}
+  .hero-image-wrapper {
+    width: 260px;
+    height: 320px;
+  }
 
-.image-frame:hover img {
-  transform: scale(1.03);
+  .decoration-1 {
+    top: -8px;
+    right: -8px;
+  }
+
+  .decoration-2 {
+    bottom: -8px;
+    left: -8px;
+  }
 }

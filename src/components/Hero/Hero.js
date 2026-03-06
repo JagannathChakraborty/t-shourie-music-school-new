@@ -1,18 +1,65 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { FaPlay, FaMusic, FaHeadphones } from 'react-icons/fa';
 import MusicAnimation from '../MusicAnimation/MusicAnimation';
 
-// Image Import
+// Image Imports
 import heroImg from '../../assets/images/hero/hero-main.jpg';
+import heroImg1 from '../../assets/images/hero/hero-main1.jpg';
+import heroImg2 from '../../assets/images/hero/hero-main2.jpg';
 
 import './Hero.css';
 
+const SLIDES = [
+  {
+    src: heroImg,
+    alt: 'T. Shourie School of Music - Performance',
+    kenBurns: { scale: [1, 1.15], x: ['0%', '3%'], y: ['0%', '-3%'] },
+  },
+  {
+    src: heroImg1,
+    alt: 'T. Shourie School of Music - Students',
+    kenBurns: { scale: [1, 1.12], x: ['0%', '-3%'], y: ['0%', '2%'] },
+  },
+  {
+    src: heroImg2,
+    alt: 'T. Shourie School of Music - Studio',
+    kenBurns: { scale: [1, 1.18], x: ['0%', '2%'], y: ['0%', '-2%'] },
+  },
+];
+
+const SLIDE_DURATION = 3000;
+const CROSSFADE_DURATION = 1;
+
+const slideVariants = {
+  enter: {
+    opacity: 0,
+    scale: 1.05,
+  },
+  center: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      opacity: { duration: CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+      scale: { duration: CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      opacity: { duration: CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+    },
+  },
+};
+
 const Hero = () => {
   const heroRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideTimerRef = useRef(null);
 
+  // GSAP entrance animations (unchanged)
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -70,6 +117,32 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
+  // Preload images
+  useEffect(() => {
+    SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  }, []);
+
+  // Auto-play slideshow
+  const advanceSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    slideTimerRef.current = setInterval(advanceSlide, SLIDE_DURATION);
+    return () => {
+      if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    };
+  }, [advanceSlide]);
+
+  const handleDotClick = (index) => {
+    setCurrentSlide(index);
+    if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    slideTimerRef.current = setInterval(advanceSlide, SLIDE_DURATION);
+  };
+
   return (
     <section className="hero" ref={heroRef}>
       <div className="hero-background">
@@ -92,11 +165,11 @@ const Hero = () => {
 
           <h1 className="hero-title">
             <div className="hero-title-line">
-              <span className="title-word">Where</span>
+              <span className="title-word">Where</span>{' '}
               <span className="title-word highlight">Passion</span>
             </div>
             <div className="hero-title-line">
-              <span className="title-word">Meets</span>
+              <span className="title-word">Meets</span>{' '}
               <span className="title-word highlight">Practice</span>
             </div>
           </h1>
@@ -144,7 +217,54 @@ const Hero = () => {
           >
             <div className="hero-image-wrapper">
               <div className="image-frame">
-                <img src={heroImg} alt="T. Shourie School of Music" />
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={currentSlide}
+                    className="slideshow-slide"
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                  >
+                    <motion.img
+                      src={SLIDES[currentSlide].src}
+                      alt={SLIDES[currentSlide].alt}
+                      animate={{
+                        scale: SLIDES[currentSlide].kenBurns.scale,
+                        x: SLIDES[currentSlide].kenBurns.x,
+                        y: SLIDES[currentSlide].kenBurns.y,
+                      }}
+                      transition={{
+                        duration: SLIDE_DURATION / 1000,
+                        ease: 'linear',
+                      }}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="slideshow-progress">
+                  <motion.div
+                    className="slideshow-progress-fill"
+                    key={`progress-${currentSlide}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{
+                      duration: SLIDE_DURATION / 1000,
+                      ease: 'linear',
+                    }}
+                  />
+                </div>
+
+                <div className="slideshow-indicators">
+                  {SLIDES.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`slideshow-dot ${index === currentSlide ? 'active' : ''}`}
+                      onClick={() => handleDotClick(index)}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
               <div className="image-decoration decoration-1"></div>
               <div className="image-decoration decoration-2"></div>
