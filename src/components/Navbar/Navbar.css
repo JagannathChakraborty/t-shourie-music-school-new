@@ -319,11 +319,24 @@
 }
 
 @media (max-width: 480px) {
-  .logo-text-wrapper {
-    display: none;
+  .logo-main {
+    font-size: 1.1rem;
+  }
+
+  .logo-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
   }
 
   .mobile-menu {
     max-width: 100%;
+  }
+
+  .mobile-menu-header {
+    padding: 1rem;
+  }
+
+  .mobile-logo span {
+    font-size: 1.1rem;
   }
 }

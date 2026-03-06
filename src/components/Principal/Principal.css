@@ -325,6 +325,15 @@
     right: 50%;
     transform: translateX(50%);
     bottom: -30px;
+    padding: 1rem 1.25rem;
+  }
+
+  .badge-number {
+    font-size: 1.75rem;
+  }
+
+  .badge-text {
+    font-size: 0.65rem;
   }
 
   .principal-image-wrapper {
