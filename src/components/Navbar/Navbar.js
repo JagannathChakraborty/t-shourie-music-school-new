@@ -23,6 +23,7 @@ const Navbar = () => {
     { name: 'Gallery', path: '/gallery' },
     { name: 'Our Services', path: '/services' },
     { name: 'Why Choose Us', path: '/why-us' },
+    { name: 'Contact Us', path: '/#contact' },
   ];
 
   useEffect(() => {
@@ -193,6 +194,7 @@ const Navbar = () => {
                 <Link to="/gallery" className="mobile-link">Gallery</Link>
                 <Link to="/services" className="mobile-link">Our Services</Link>
                 <Link to="/why-us" className="mobile-link">Why Choose Us</Link>
+                <Link to="/#contact" className="mobile-link">Contact Us</Link>
 
                 <a href="tel:9937023166" className="mobile-cta">
                   <FaPhoneAlt />

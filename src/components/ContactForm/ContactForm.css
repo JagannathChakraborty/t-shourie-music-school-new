@@ -3,6 +3,23 @@
   position: relative;
 }
 
+.contact-section.section {
+  padding: 20px 0 50px;
+}
+
+.contact-section .section-header {
+  margin-bottom: 1rem;
+}
+
+.contact-section .section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  margin-bottom: 0.5rem;
+}
+
+.contact-section .section-label {
+  margin-bottom: 0.5rem;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -313,6 +330,14 @@
 }
 
 @media (max-width: 768px) {
+  .contact-section.section {
+    padding: 40px 0;
+  }
+
+  .contact-section .section-header {
+    margin-bottom: 1.25rem;
+  }
+
   .info-cards {
     grid-template-columns: 1fr;
   }
@@ -324,5 +349,50 @@
 
   .contact-form-wrapper {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section.section {
+    padding: 30px 0;
+  }
+
+  .contact-section .section-header {
+    margin-bottom: 1rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 1rem;
+  }
+
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .info-content p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    gap: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 1rem;
   }
 }

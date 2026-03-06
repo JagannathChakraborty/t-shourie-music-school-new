@@ -278,6 +278,9 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                <Link to="/#contact" className="service-enquiry-btn">
+                  Enquiry Now <FaArrowRight />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -315,6 +318,9 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                <Link to="/#contact" className="service-enquiry-btn">
+                  Enquiry Now <FaArrowRight />
+                </Link>
               </motion.div>
             ))}
           </div>

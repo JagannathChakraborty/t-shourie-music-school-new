@@ -58,22 +58,28 @@ function App() {
   useEffect(() => {
     if (location.hash) {
       // Navigate to a hash section (e.g. /#contact)
+      const id = location.hash.slice(1);
       const scrollToHash = () => {
-        const id = location.hash.slice(1);
         const element = document.getElementById(id);
         if (element) {
           const navbarHeight = 80;
           const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
           if (lenisRef.current) {
-            lenisRef.current.scrollTo(top, { duration: 1.2 });
+            lenisRef.current.scrollTo(top, { immediate: true });
           } else {
-            window.scrollTo({ top, behavior: 'smooth' });
+            window.scrollTo({ top, behavior: 'instant' });
           }
         }
       };
-      // Delay to allow page to render first
-      const t = setTimeout(scrollToHash, 400);
-      return () => clearTimeout(t);
+      // Multiple attempts to handle page transition delays reliably
+      const t1 = setTimeout(scrollToHash, 100);
+      const t2 = setTimeout(scrollToHash, 600);
+      const t3 = setTimeout(scrollToHash, 1200);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
     } else {
       if (lenisRef.current) {
         lenisRef.current.scrollTo(0, { immediate: true });

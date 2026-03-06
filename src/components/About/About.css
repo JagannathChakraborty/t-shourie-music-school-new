@@ -334,17 +334,64 @@
   }
 }
 
-/* Add these to existing About.css */
-
-.about-image-frame img {
+/* About Slideshow */
+.about-slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: var(--transition-smooth);
+  overflow: hidden;
 }
 
-.about-image-frame:hover img {
-  transform: scale(1.05);
+.about-slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.about-slideshow-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+}
+
+.about-slideshow-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-gold);
+  transform-origin: left;
+}
+
+.about-slideshow-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.about-slideshow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.about-slideshow-dot.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: scale(1.2);
 }
 
 .tribute-image img {

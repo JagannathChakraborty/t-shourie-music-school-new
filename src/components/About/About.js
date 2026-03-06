@@ -1,19 +1,58 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaMusic, FaHeart, FaUsers, FaStar } from 'react-icons/fa';
 
 // Image Imports
 import schoolImg from '../../assets/images/about/school.jpg';
+import aSpaceWhereImg from '../../assets/images/about/a space where.JPG';
 import swaroopNaikImg from '../../assets/images/about/swaroop-naik.jpg';
 
 import './About.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const ABOUT_SLIDES = [
+  {
+    src: schoolImg,
+    alt: 'T. Shourie School of Music',
+    fit: 'cover',
+    kenBurns: { scale: [1, 1.12], x: ['0%', '2%'], y: ['0%', '-2%'] },
+  },
+  {
+    src: aSpaceWhereImg,
+    alt: 'A Space Where Music is a Way of Life',
+    fit: 'contain',
+    kenBurns: { scale: [1, 1.05], x: ['0%', '0%'], y: ['0%', '0%'] },
+  },
+];
+
+const ABOUT_SLIDE_DURATION = 3000;
+const ABOUT_CROSSFADE_DURATION = 1;
+
+const aboutSlideVariants = {
+  enter: { opacity: 0, scale: 1.05 },
+  center: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      opacity: { duration: ABOUT_CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+      scale: { duration: ABOUT_CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      opacity: { duration: ABOUT_CROSSFADE_DURATION, ease: [0.4, 0, 0.2, 1] },
+    },
+  },
+};
+
 const About = () => {
   const sectionRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideTimerRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -88,6 +127,32 @@ const About = () => {
     return () => ctx.revert();
   }, []);
 
+  // Preload about images
+  useEffect(() => {
+    ABOUT_SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  }, []);
+
+  // Auto-play slideshow
+  const advanceSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % ABOUT_SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    slideTimerRef.current = setInterval(advanceSlide, ABOUT_SLIDE_DURATION);
+    return () => {
+      if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    };
+  }, [advanceSlide]);
+
+  const handleDotClick = (index) => {
+    setCurrentSlide(index);
+    if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    slideTimerRef.current = setInterval(advanceSlide, ABOUT_SLIDE_DURATION);
+  };
+
   const stats = [
     { icon: <FaMusic />, number: '10+', label: 'Years of Excellence' },
     { icon: <FaUsers />, number: '1000+', label: 'Students Trained' },
@@ -134,7 +199,55 @@ const About = () => {
           <div className="about-content-left">
             <div className="about-image-wrapper">
               <div className="about-image-frame">
-                <img src={schoolImg} alt="T. Shourie School of Music" />
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={currentSlide}
+                    className="about-slideshow-slide"
+                    variants={aboutSlideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                  >
+                    <motion.img
+                      src={ABOUT_SLIDES[currentSlide].src}
+                      alt={ABOUT_SLIDES[currentSlide].alt}
+                      style={{ objectFit: ABOUT_SLIDES[currentSlide].fit }}
+                      animate={{
+                        scale: ABOUT_SLIDES[currentSlide].kenBurns.scale,
+                        x: ABOUT_SLIDES[currentSlide].kenBurns.x,
+                        y: ABOUT_SLIDES[currentSlide].kenBurns.y,
+                      }}
+                      transition={{
+                        duration: ABOUT_SLIDE_DURATION / 1000,
+                        ease: 'linear',
+                      }}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="about-slideshow-progress">
+                  <motion.div
+                    className="about-slideshow-progress-fill"
+                    key={`about-progress-${currentSlide}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{
+                      duration: ABOUT_SLIDE_DURATION / 1000,
+                      ease: 'linear',
+                    }}
+                  />
+                </div>
+
+                <div className="about-slideshow-indicators">
+                  {ABOUT_SLIDES.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`about-slideshow-dot ${index === currentSlide ? 'active' : ''}`}
+                      onClick={() => handleDotClick(index)}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
               <div className="about-image-decoration decoration-1"></div>
               <div className="about-image-decoration decoration-2"></div>

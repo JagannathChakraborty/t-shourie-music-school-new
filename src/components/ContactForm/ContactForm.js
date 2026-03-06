@@ -127,10 +127,6 @@ const ContactForm = () => {
           <h2 className="section-title">
             Contact <span>Us</span>
           </h2>
-          <p className="section-subtitle">
-            Have questions? We'd love to hear from you. Send us a message and
-            we'll respond as soon as possible.
-          </p>
         </div>
 
         <div className="contact-grid">
@@ -223,7 +219,7 @@ const ContactForm = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
+                  <label htmlFor="email">Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -231,14 +227,13 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    required
                   />
                 </div>
               </div>
 
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="phone">Phone Number</label>
+                  <label htmlFor="phone">Phone Number *</label>
                   <input
                     type="tel"
                     id="phone"
@@ -246,6 +241,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 XXXXX XXXXX"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -268,7 +264,7 @@ const ContactForm = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Your Message *</label>
+                <label htmlFor="message">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -276,7 +272,6 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Tell us how we can help you..."
                   rows="5"
-                  required
                 ></textarea>
               </div>
 
