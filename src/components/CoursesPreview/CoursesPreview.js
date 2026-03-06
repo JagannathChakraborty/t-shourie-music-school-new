@@ -159,7 +159,7 @@ const CoursesPreview = () => {
   const certifications = [
     {
       icon: <FaCertificate />,
-      title: 'Akhila Bhartiya Gandharv Mahavidyalaya Mandal',
+      title: 'Akhila Bhartiya Gandharva Mahavidyalaya Mandal',
       subtitle: 'University Grants Commission (UGC)',
     },
     {

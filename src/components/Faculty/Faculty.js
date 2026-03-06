@@ -78,7 +78,7 @@ const Faculty = () => {
       id: 3,
       name: 'Usha Jena',
       role: 'Faculty',
-      specialization: 'Akhila Bhartiya Gandharv Mahavidyalaya Mandal',
+      specialization: 'Akhila Bhartiya Gandharva Mahavidyalaya Mandal',
       credential: 'UGC Certified Curriculum',
       image: ushaImg,
     },

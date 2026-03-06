@@ -393,7 +393,7 @@ const Services = () => {
                 Call Us: 9937023166
               </a>
               <Link to="/#contact" className="btn-secondary">
-                Get a Quote <FaArrowRight />
+                Send Enquiry <FaArrowRight />
               </Link>
             </div>
           </motion.div>

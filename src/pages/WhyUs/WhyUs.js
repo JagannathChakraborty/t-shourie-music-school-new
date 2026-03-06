@@ -104,7 +104,7 @@ const WhyUs = () => {
       icon: <FaLaptop />,
       title: 'Learning by Doing',
       description:
-        'Hands-on access to professional workflows alongside experienced mentors in real projects.',
+        'Hands-on access to professional workflows alongside experienced mentors on real projects.',
     },
     {
       icon: <FaTheaterMasks />,
@@ -116,13 +116,13 @@ const WhyUs = () => {
       icon: <FaCertificate />,
       title: 'Recognized Certifications',
       description:
-        'Get certified from prestigious academies like Gandharv Mahavidyalaya and Odisha Sangeet Natak Academy.',
+        'Get certified by prestigious academies like Gandharva Mahavidyalaya and Odisha Sangeet Natak Academy.',
     },
     {
       icon: <FaAward />,
       title: 'Industry Connections',
       description:
-        'Direct pathway to the entertainment industry through T. Shourie Entertainment network.',
+        'Direct pathway to the entertainment industry through the T. Shourie Entertainment network.',
     },
     {
       icon: <FaUsers />,
@@ -360,7 +360,7 @@ const WhyUs = () => {
               whileHover={{ y: -5 }}
             >
               <div className="cert-why-icon">🎓</div>
-              <h3>Akhila Bhartiya Gandharv Mahavidyalaya Mandal</h3>
+              <h3>Akhila Bhartiya Gandharva Mahavidyalaya Mandal</h3>
               <p>University Grants Commission (UGC) Recognized</p>
               <span className="cert-badge">Government Recognized</span>
             </motion.div>
@@ -397,7 +397,7 @@ const WhyUs = () => {
                 Call Us: 9937023166
               </a>
               <Link to="/#contact" className="btn-secondary">
-                Send Inquiry <FaArrowRight />
+                Send Enquiry <FaArrowRight />
               </Link>
             </div>
           </motion.div>

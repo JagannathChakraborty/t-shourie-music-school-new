@@ -98,7 +98,7 @@ const WhyChooseUs = () => {
     {
       icon: <FaLaptop />,
       title: 'Learning by Doing',
-      description: 'Hands-on access to professional workflows alongside experienced mentors in real projects.',
+      description: 'Hands-on access to professional workflows alongside experienced mentors on real projects.',
     },
     {
       icon: <FaTheaterMasks />,
@@ -108,12 +108,12 @@ const WhyChooseUs = () => {
     {
       icon: <FaCertificate />,
       title: 'Recognized Certifications',
-      description: 'Get certified from prestigious academies like Gandharv Mahavidyalaya and Odisha Sangeet Natak Academy.',
+      description: 'Get certified by prestigious academies like Gandharva Mahavidyalaya and Odisha Sangeet Natak Academy.',
     },
     {
       icon: <FaAward />,
       title: 'Industry Connections',
-      description: 'Direct pathway to the entertainment industry through T. Shourie Entertainment network.',
+      description: 'Direct pathway to the entertainment industry through the T. Shourie Entertainment network.',
     },
     {
       icon: <FaUsers />,
@@ -254,7 +254,7 @@ const WhyChooseUs = () => {
                 Call Us Now
               </a>
               <a href="#contact" className="btn-secondary">
-                Send a Message
+                Send Enquiry
               </a>
             </div>
           </motion.div>

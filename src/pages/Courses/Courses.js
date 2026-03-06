@@ -150,7 +150,7 @@ const Courses = () => {
       ],
       duration: '1-5 Years',
       level: 'Beginner to Advanced',
-      certification: 'Akhila Bhartiya Gandharv Mahavidyalaya Mandal',
+      certification: 'Akhila Bhartiya Gandharva Mahavidyalaya Mandal',
     },
     {
       id: 6,
@@ -217,7 +217,7 @@ const Courses = () => {
       description:
         'Dedicated preparation for certification exams from recognized music academies and institutions.',
       features: [
-        'Gandharv Mahavidyalaya exams',
+        'Gandharva Mahavidyalaya exams',
         'Sangeet Natak Academy exams',
         'Theory and practical prep',
         'Mock examinations',
@@ -361,7 +361,7 @@ const Courses = () => {
               Recognized <span>Certifications</span>
             </h2>
             <p className="section-subtitle">
-              Get certified from prestigious academies
+              Get certified by prestigious academies
             </p>
           </div>
 
@@ -371,7 +371,7 @@ const Courses = () => {
               whileHover={{ y: -5 }}
             >
               <div className="cert-icon">🎓</div>
-              <h3>Akhila Bhartiya Gandharv Mahavidyalaya Mandal</h3>
+              <h3>Akhila Bhartiya Gandharva Mahavidyalaya Mandal</h3>
               <p>University Grants Commission (UGC) Recognized</p>
               <span className="cert-badge">Government Recognized</span>
             </motion.div>
@@ -409,7 +409,7 @@ const Courses = () => {
                 Call Us: 9937023166
               </a>
               <Link to="/#contact" className="btn-secondary">
-                Send Inquiry
+                Send Enquiry
               </Link>
             </div>
           </motion.div>
