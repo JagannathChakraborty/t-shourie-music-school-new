@@ -140,7 +140,7 @@ const Courses = () => {
       title: 'Hindustani Classical Vocal',
       subtitle: 'Traditional Indian Music',
       description:
-        'Deep dive into the rich tradition of Hindustani classical music with certified curriculum from recognized academies.',
+        'A deep dive into the rich tradition of Hindustani classical music with certified curriculum from recognized academies.',
       features: [
         'Raag and Taal fundamentals',
         'Bandish training',
@@ -200,7 +200,7 @@ const Courses = () => {
         'Hands-on course covering DAWs, beat-making, mixing, and mastering. Learn to produce professional-quality music.',
       features: [
         'DAW mastery (FL Studio, Logic Pro)',
-        'Beat making & composition',
+        'Beat-making & composition',
         'Mixing techniques',
         'Mastering fundamentals',
         'Sound design',
@@ -372,7 +372,7 @@ const Courses = () => {
             >
               <div className="cert-icon">🎓</div>
               <h3>Akhila Bhartiya Gandharva Mahavidyalaya Mandal</h3>
-              <p>University Grants Commission (UGC) Recognized</p>
+              <p>University Grants Commission (UGC)</p>
               <span className="cert-badge">Government Recognized</span>
             </motion.div>
 

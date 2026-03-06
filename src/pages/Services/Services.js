@@ -181,6 +181,7 @@ const Services = () => {
             <p>
               At T. Shourie School of Music, we go beyond traditional music education
               to offer a comprehensive creative ecosystem for aspiring musicians,
+              <br />
               composers, producers, and media artists.
             </p>
           </motion.div>
@@ -350,7 +351,7 @@ const Services = () => {
               <span className="why-number">02</span>
               <h3>Learning by Doing</h3>
               <p>
-                Students get hands-on access to professional workflows alongside
+                Students gain hands-on access to professional workflows alongside
                 experienced mentors.
               </p>
             </motion.div>

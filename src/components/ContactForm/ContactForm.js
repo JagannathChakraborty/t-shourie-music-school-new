@@ -35,6 +35,12 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.message && formData.message.length < 20) {
+      setStatus({ type: 'error', message: 'Message must be at least 20 characters long.' });
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
@@ -276,7 +282,11 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Tell us how we can help you..."
                   rows="5"
+                  maxLength={1000}
                 ></textarea>
+                <span className="char-counter">
+                  {formData.message.length} / 1000 characters
+                </span>
               </div>
 
               {status.message && (

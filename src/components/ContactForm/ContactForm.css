@@ -260,6 +260,13 @@
   min-height: 120px;
 }
 
+.char-counter {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  text-align: right;
+  margin-top: -0.25rem;
+}
+
 .form-group select {
   cursor: pointer;
   appearance: none;

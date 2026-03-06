@@ -361,7 +361,7 @@ const WhyUs = () => {
             >
               <div className="cert-why-icon">🎓</div>
               <h3>Akhila Bhartiya Gandharva Mahavidyalaya Mandal</h3>
-              <p>University Grants Commission (UGC) Recognized</p>
+              <p>University Grants Commission (UGC)</p>
               <span className="cert-badge">Government Recognized</span>
             </motion.div>
 

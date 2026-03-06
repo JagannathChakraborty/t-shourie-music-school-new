@@ -176,7 +176,7 @@ const Hero = () => {
 
           <p className="hero-subtitle">
             T. Shourie School of Music is a space where music is more than just
-            a subject — it's a way of life. One of Odisha's leading music
+            a subject — it's a way of life, and one of Odisha's leading music
             schools for learners of all ages and levels.
           </p>
 
