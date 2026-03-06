@@ -86,7 +86,7 @@ const ContactForm = () => {
       icon: <FaMapMarkerAlt />,
       title: 'Visit Us',
       content: 'Century Plaza, 1st Floor, Rajtarangini Complex, Buxibazar, Cuttack, Odisha – 753001',
-      link: 'https://maps.google.com/?q=Buxibazar+Cuttack+Odisha+753001',
+      link: 'https://maps.google.com/?q=Rajtarangini+Complex,+Buxibazar,+Cuttack,+Odisha+753001',
     },
     {
       icon: <FaPhoneAlt />,
@@ -200,7 +200,7 @@ const ContactForm = () => {
 
             <div className="map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.448!2d85.8783!3d20.4625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xcfc0105a68086728!2sBuxibazar%2C%20Cuttack%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000"
+                src="https://maps.google.com/maps?q=Rajtarangini+Complex,+Buxibazar,+Cuttack,+Odisha+753001&output=embed"
                 width="100%"
                 height="200"
                 style={{ border: 0, borderRadius: 'var(--radius-md)' }}

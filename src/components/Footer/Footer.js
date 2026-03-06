@@ -122,7 +122,7 @@ const Footer = () => {
             <div className="footer-contact">
               <h4>Contact Us</h4>
               <div className="contact-items">
-                <a href="https://maps.google.com/?q=Buxibazar,Cuttack,Odisha" target="_blank" rel="noopener noreferrer" className="contact-item">
+                <a href="https://maps.google.com/?q=Rajtarangini+Complex,+Buxibazar,+Cuttack,+Odisha+753001" target="_blank" rel="noopener noreferrer" className="contact-item">
                   <FaMapMarkerAlt />
                   <span>Buxibazar, Cuttack, Odisha, Century Plaza,1st Floor, Rajtarangini Complex 753001</span>
                 </a>
