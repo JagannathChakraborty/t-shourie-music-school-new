@@ -127,6 +127,10 @@ const ContactForm = () => {
           <h2 className="section-title">
             Contact <span>Us</span>
           </h2>
+          <p className="section-subtitle">
+            Have questions? We'd love to hear from you. Send us a message and
+            we'll respond as soon as possible.
+          </p>
         </div>
 
         <div className="contact-grid">
