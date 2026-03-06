@@ -214,11 +214,26 @@
   height: 40px;
 }
 
-.mobile-logo span {
+.mobile-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-logo-main {
   font-family: var(--font-primary);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-maroon);
+  line-height: 1.1;
+}
+
+.mobile-logo-sub {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-maroon);
+  font-style: italic;
+  letter-spacing: 1px;
 }
 
 .mobile-close {
@@ -336,7 +351,11 @@
     padding: 1rem;
   }
 
-  .mobile-logo span {
+  .mobile-logo-main {
     font-size: 1.1rem;
+  }
+
+  .mobile-logo-sub {
+    font-size: 0.65rem;
   }
 }

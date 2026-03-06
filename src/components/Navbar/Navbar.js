@@ -156,7 +156,10 @@ const Navbar = () => {
               <div className="mobile-menu-header">
                 <Link to="/" className="mobile-logo">
                   <img src="/logo.png" alt="T. Shourie" />
-                  <span>T. Shourie</span>
+                  <div className="mobile-logo-text">
+                    <span className="mobile-logo-main">T. Shourie</span>
+                    <span className="mobile-logo-sub">The School of Music</span>
+                  </div>
                 </Link>
                 <button className="mobile-close" onClick={() => setIsOpen(false)}>
                   <FaTimes />
