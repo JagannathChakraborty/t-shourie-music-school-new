@@ -392,7 +392,7 @@ const Services = () => {
               <a href="tel:9937023166" className="btn-primary">
                 Call Us: 9937023166
               </a>
-              <Link to="/#contact" className="btn-secondary">
+              <Link to="/#contact" className="btn-primary">
                 Send Enquiry <FaArrowRight />
               </Link>
             </div>
