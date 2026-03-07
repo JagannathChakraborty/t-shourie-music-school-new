@@ -175,22 +175,6 @@ const Gallery = () => {
           </>
           )}
 
-          {/* Coming Soon Notice */}
-          <div className="gallery-notice">
-            <p>
-              <strong>Gallery Update In Progress:</strong> Real photos from our
-              events, classes, and studio sessions will be added shortly. Check
-              back soon or{' '}
-              <a
-                href="https://www.instagram.com/tshourieschoolofmusic"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                follow us on Instagram
-              </a>{' '}
-              for the latest moments.
-            </p>
-          </div>
         </div>
       </section>
 
