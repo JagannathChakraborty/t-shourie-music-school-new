@@ -77,15 +77,25 @@ const ContactForm = () => {
         });
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       } else {
-        setStatus({
-          type: 'error',
-          message: data.message || 'Oops! Something went wrong. Please try again.',
-        });
+        // Show specific error from API (e.g. field validation errors)
+        let errorMsg = '';
+        if (data.errors && Array.isArray(data.errors)) {
+          errorMsg = data.errors.join('. ');
+        } else if (data.errors && typeof data.errors === 'object') {
+          errorMsg = Object.values(data.errors).flat().join('. ');
+        } else if (data.message) {
+          errorMsg = data.message;
+        } else if (data.title) {
+          errorMsg = data.title;
+        } else {
+          errorMsg = 'Something went wrong. Please check your details and try again.';
+        }
+        setStatus({ type: 'error', message: errorMsg });
       }
     } catch {
       setStatus({
         type: 'error',
-        message: 'Unable to send your message. Please try again or reach us on WhatsApp.',
+        message: 'Unable to connect to the server. Please check your internet and try again, or reach us on WhatsApp.',
       });
     } finally {
       setIsSubmitting(false);
@@ -242,12 +252,12 @@ const ContactForm = () => {
                 <div className="form-group">
                   <label htmlFor="email">Email Address</label>
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="your@email.com"
+                    placeholder="your@email.com (optional)"
                   />
                 </div>
               </div>
