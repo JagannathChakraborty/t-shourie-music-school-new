@@ -70,7 +70,7 @@ const Footer = () => {
                 <img src="/logo.png" alt="T. Shourie" className="logo-img" />
                 <div className="logo-text">
                   <span className="logo-main">T. Shourie</span>
-                  <span className="logo-sub">The School of Music</span>
+                  <span className="logo-sub">School of Music</span>
                 </div>
               </Link>
               <p className="footer-tagline">
@@ -145,7 +145,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-content">
             <p className="copyright">
-              © {new Date().getFullYear()} T. Shourie The School of Music. All Rights Reserved.
+              © {new Date().getFullYear()} T. Shourie School of Music. All Rights Reserved.
             </p>
             <p className="made-with">
               Made with <FaHeart className="heart-icon" /> & <FaMusic className="music-icon" />

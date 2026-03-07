@@ -61,7 +61,7 @@ const Navbar = () => {
             <img src="/logo.png" alt="T. Shourie" className="logo-img" />
             <div className="logo-text-wrapper">
               <span className="logo-main">T. Shourie</span>
-              <span className="logo-sub">The School of Music</span>
+              <span className="logo-sub">School of Music</span>
             </div>
           </div>
         </Link>
@@ -158,7 +158,7 @@ const Navbar = () => {
                   <img src="/logo.png" alt="T. Shourie" />
                   <div className="mobile-logo-text">
                     <span className="mobile-logo-main">T. Shourie</span>
-                    <span className="mobile-logo-sub">The School of Music</span>
+                    <span className="mobile-logo-sub">School of Music</span>
                   </div>
                 </Link>
                 <button className="mobile-close" onClick={() => setIsOpen(false)}>
