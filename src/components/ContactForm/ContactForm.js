@@ -41,20 +41,31 @@ const ContactForm = () => {
       return;
     }
 
+    // Validate email format only if provided
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
+
+    // Only include email in payload if provided
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+    if (formData.email.trim()) {
+      payload.email = formData.email.trim();
+    }
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
