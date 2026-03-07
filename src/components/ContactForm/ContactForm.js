@@ -50,16 +50,14 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
-    // Only include email in payload if provided
+    // Send email as null when not provided so backend skips validation
     const payload = {
       name: formData.name,
+      email: formData.email.trim() || null,
       phone: formData.phone,
       subject: formData.subject,
       message: formData.message,
     };
-    if (formData.email.trim()) {
-      payload.email = formData.email.trim();
-    }
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
