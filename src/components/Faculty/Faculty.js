@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -184,9 +185,9 @@ const Faculty = () => {
               Join our school and get personalized guidance from industry experts who have dedicated their lives to music.
             </p>
           </div>
-          <a href="tel:9937023166" className="btn-primary">
+          <Link to="/#contact" className="btn-primary">
             <span>Enroll Now</span>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
