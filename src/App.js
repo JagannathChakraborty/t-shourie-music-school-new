@@ -1,3 +1,4 @@
+// T. Shourie School of Music - Main Application
 import { useEffect, useState, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
