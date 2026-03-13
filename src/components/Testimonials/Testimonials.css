@@ -32,7 +32,8 @@
 
 .testimonials-section .section-subtitle {
   color: #d4b87a !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem) !important;
 }
 
 /* Testimonials Grid */
