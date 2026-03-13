@@ -12,6 +12,7 @@ import Faculty from '../../components/Faculty/Faculty';
 import Brahmadarsan from '../../components/Brahmadarsan/Brahmadarsan';
 import ServicesPreview from '../../components/ServicesPreview/ServicesPreview';
 import WhyChooseUs from '../../components/WhyChooseUs/WhyChooseUs';
+import Testimonials from '../../components/Testimonials/Testimonials';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
 import './Home.css';
@@ -64,6 +65,7 @@ const Home = () => {
       <Brahmadarsan />
       <ServicesPreview />
       <WhyChooseUs />
+      <Testimonials />
       <ContactForm />
     </motion.div>
   );
